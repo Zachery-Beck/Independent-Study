@@ -1,9 +1,8 @@
 """ Runs full code """
 import os
 from dotenv import load_dotenv
-from IndependentStudy import is_stopwords_downloaded, file_to_list
-from IndependentStudy import tif_idf
-from file_operations import list_txt_files
+from IndependentStudy import is_stopwords_downloaded, file_to_list, list_txt_files, tif_idf
+
 
 
 def __main__():
