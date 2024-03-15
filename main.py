@@ -1,17 +1,14 @@
 """ Runs full code """
 import os
 from dotenv import load_dotenv
-from IndependentStudy import is_stopwords_downloaded, file_to_list, list_txt_files, tif_idf
-
-
+from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified
 
 def __main__():
     load_dotenv()
-    is_stopwords_downloaded()
     input_directory = os.getenv('INPUT_DIRECTORY')
-    txt_files_list=list_txt_files(input_directory)
-    all_words_list=file_to_list(txt_files_list)
-    print(tif_idf(all_words_list))
-
+    txt_files_list = list_txt_files(input_directory)
+    document_string = file_to_string(txt_files_list) # Read all content from files and concatenate into a single string
+    fixeddf = calculate_tf_idf_simplified(document_string) # Pass the single string to the function
+    print(fixeddf)
 
 __main__()
