@@ -1,14 +1,21 @@
-""" Runs full code """
 import os
 from dotenv import load_dotenv
-from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified
+from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified, is_stopwords_downloaded
 
 def __main__():
     load_dotenv()
+    is_stopwords_downloaded()
     input_directory = os.getenv('INPUT_DIRECTORY')
     txt_files_list = list_txt_files(input_directory)
-    document_string = file_to_string(txt_files_list) # Read all content from files and concatenate into a single string
-    fixeddf = calculate_tf_idf_simplified(document_string) # Pass the single string to the function
-    print(fixeddf)
+    document_string = file_to_string(txt_files_list) 
+    fixeddf = calculate_tf_idf_simplified(document_string)
+    
+    # Define the file path where you want to save the DataFrame
+    output_file_path = 'output.csv'
+    
+    # Write the DataFrame to a CSV file
+    fixeddf.to_csv(output_file_path, index=False)
+    
+    print(f"DataFrame has been written to {output_file_path}")
 
 __main__()
