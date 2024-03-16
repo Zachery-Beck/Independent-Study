@@ -38,9 +38,6 @@ def calculate_tf_idf_simplified(document_string):
     nltk_stopwords = nltk.corpus.stopwords.words('english')
     vectorizer = TfidfVectorizer(stop_words=nltk_stopwords)
     
-    # Print the list of stop words used by the vectorizer
-    print("Stop words used by TfidfVectorizer:", vectorizer.get_stop_words())
-    
     vectors = vectorizer.fit_transform([document_string])
     feature_names = vectorizer.get_feature_names_out()
     tf_idf_scores = vectors.toarray()[0]
@@ -48,12 +45,4 @@ def calculate_tf_idf_simplified(document_string):
     
     return words_df
 
-# Ensure NLTK's stop words corpus is downloaded
-is_stopwords_downloaded()
 
-# Example usage
-directory = 'input'
-txt_files_list = list_txt_files(directory)
-document_string = file_to_string(txt_files_list)
-tf_idf_df = calculate_tf_idf_simplified(document_string)
-print(tf_idf_df)
