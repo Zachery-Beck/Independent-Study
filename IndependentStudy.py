@@ -4,6 +4,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import nltk
 
+import pathlib
+
 def is_stopwords_downloaded() -> None:
     """Check to see if Stop words is downloaded if so return already dowladed else adds extra words list and stopwords list"""
     try:
@@ -28,24 +30,40 @@ def list_txt_files(directory : str) -> list:
 
 def file_to_string(txt_files_list : list) -> str:
     """Read all content from a list of text files and concatenate into a single string."""
-    all_content = ""
+    all_content = []
+    # file_list= []
     for file in txt_files_list:
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
-            all_content += content + " " 
+            all_content.append(content)
     return all_content
 
-def calculate_tf_idf_simplified(document_string : str) -> pd.DataFrame:
+def calculate_tf_idf_simplified(string_list : list) -> pd.DataFrame:
     """Calculate TF-IDF scores for the words in the provided document string and return them as a DataFrame."""
     # Use NLTK's stop words
     nltk_stopwords = nltk.corpus.stopwords.words('english')
-    vectorizer = TfidfVectorizer(stop_words=nltk_stopwords)
-    
-    vectors = vectorizer.fit_transform([document_string])
+    vectorizer = TfidfVectorizer(stop_words=nltk_stopwords,input='filename')
+    vectors = vectorizer.fit_transform(string_list)
     feature_names = vectorizer.get_feature_names_out()
-    tf_idf_scores = vectors.toarray()[0]
-    words_df = pd.DataFrame({'word': feature_names, 'TF-IDF': tf_idf_scores})
-    
+    print(type(feature_names))
+    headers = [pathlib.Path(string).name for string in string_list]
+    words_df = pd.DataFrame(vectors.toarray(), columns=feature_names).transpose()
+    words_df.columns = headers
+    words_df.index.name = "Words"
+    print(words_df.head())
     return words_df
+    # >>> corpus = [
+    # ...     'This is the first document.',
+    # ...     'This document is the second document.',
+    # ...     'And this is the third one.',
+    # ...     'Is this the first document?',
+    # ... ]
+    # >>> vectorizer = TfidfVectorizer()
+    # >>> X = vectorizer.fit_transform(corpus)
+    # >>> vectorizer.get_feature_names_out()
+    # array(['and', 'document', 'first', 'is', 'one', 'second', 'the', 'third',
+    #        'this'], ...)
+    # >>> print(X.shape)
+    # (4, 9)
 
 
