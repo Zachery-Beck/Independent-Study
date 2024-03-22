@@ -65,3 +65,7 @@ def count_of_words(content: str) -> dict:
     word_counts = reduce(lambda counts, word_tuple: counts.update({word_tuple[0]: counts.get(word_tuple[0], 0) + word_tuple[1]}) or counts, word_tuples, {})
     return word_counts
 
+def write_to_csv(output : str, fixeddf : pd.DataFrame):
+    output_file_path = output
+    fixeddf.to_csv(output_file_path)
+    return output_file_path
