@@ -1,15 +1,17 @@
 """Main File"""
 import os
 from dotenv import load_dotenv
-from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified, is_stopwords_downloaded
+from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified, is_stopwords_downloaded,count_of_words
 
 def __main__():
     load_dotenv()
     is_stopwords_downloaded()
     input_directory = os.getenv('INPUT_DIRECTORY')
-    txt_files_list = list_txt_files(input_directory)
-    # string_list = file_to_string(txt_files_list) 
-    fixeddf = calculate_tf_idf_simplified(txt_files_list)
+    txt_files_list = list_txt_files(input_directory) 
+    string_list = file_to_string(txt_files_list)
+    count_dict = count_of_words(string_list)
+    fixeddf = calculate_tf_idf_simplified(txt_files_list,count_dict)
+    
     output_file_path = 'output.csv'
     fixeddf.to_csv(output_file_path)
     
