@@ -1,1 +1,0 @@
-Web development is a field that combines design, programming, and technology to create websites or web applications. HTML, CSS, and JavaScript are the core technologies used in web development. HTML is used for structuring the content on the web, CSS is used for styling, and JavaScript is used for adding interactivity.
