@@ -1,7 +1,7 @@
 """Main File"""
 import os
 from dotenv import load_dotenv
-from IndependentStudy import list_txt_files, file_to_string, calculate_tf_idf_simplified, is_stopwords_downloaded,count_of_words,write_to_csv
+from independent_study import list_txt_files, file_to_string, calculate_tf_idf_simplified, is_stopwords_downloaded,count_of_words,write_to_csv
 
 def __main__():
     load_dotenv()
@@ -13,6 +13,7 @@ def __main__():
     fixeddf = calculate_tf_idf_simplified(txt_files_list,count_dict)
     output_file_path=write_to_csv('output.csv',fixeddf)
     print(f"DataFrame has been written to {output_file_path}")
+    print(fixeddf)
 
 __main__()
 
