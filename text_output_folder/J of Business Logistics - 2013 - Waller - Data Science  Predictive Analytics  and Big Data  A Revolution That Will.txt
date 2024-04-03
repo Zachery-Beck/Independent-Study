@@ -1,0 +1,446 @@
+Data Science, Predictive Analytics, and Big Data: A Revolution
+That Will Transform Supply Chain Design and Management
+Matthew A. Waller1and Stanley E. Fawcett2
+1University of Arkansas
+2Weber State University
+We illuminate the myriad of opportunities for research where supply chain management (SCM) intersects with data science, predictive ana-
+lytics, and big data, collectively referred to as DPB. We show that these terms are not only becoming popular but are also relevant to
+supply chain research and education. Data science requires both domain knowledge and a broad set of quantitative skills, but there is a dearth
+of literature on the topic and many questions. We call for research on skills that are needed by SCM data scientists and discuss how such skills
+and domain knowledge affect the effectiveness of an SCM data scientist. Such knowledge is crucial to develop future supply chain leaders. We
+propose de ﬁnitions of data science and predictive analytics as applied to SCM. We examine possible applications of DPB in practice and pro-
+vide examples of research questions from these applications, as well as examples of research questions employing DPB that stem from manage-
+ment theories. Finally, we propose speci ﬁc steps interested researchers can take to respond to our call for research on the intersection of SCM
+and DPB.
+Keywords : data science; predictive analytics; big data; logistics; supply chain management; design; collaboration; integration; education
+INTRODUCTION
+“Big data ”is the buzzword of the day. However, more than the
+typical faddish fuzz, big data carries with it the opportunity to
+change business model design and day-to-day decision making
+that accompany emerging data analysis. This growing combina-
+tion of resources, tools, and applications has deep implications in
+theﬁeld of supply chain management (SCM), presenting a doozy
+of an opportunity and a challenge to our ﬁeld. Indeed, more data
+have been recorded in the past two years than in all of previous
+human history.1Big data are being used to transform medical
+practice, modernize public policy, and inform business decision
+making (Mayer-Sch €onberger and Cukier 2013). Big data have
+the potential to revolutionize supply chain dynamics.
+The growth in the quantity and diversity of data has led to
+data sets larger than is manageable by the conventional, hands-
+on management tools. To manage these new and potentially
+invaluable data sets, new methods of data science and new appli-
+cations in the form of predictive analytics, have been developed.
+We will refer to this new con ﬂuence of data science, predictive
+analytics, and big data as DPB.
+Data are widely considered to be a driver of better decision
+making and improved pro ﬁtability, and this perception has some
+data to back it up. Based on their large-scale study, McAfee and
+Brynjolfsson (2012) note, “[t]he more companies characterized
+themselves as data-driven, the better they performed on objective
+measures of ﬁnancial and operational results …companies in thetop third of their industry in the use of data-driven decision mak-
+ing were on average, 5% more productive and 6% more pro ﬁt-
+able than their competitors ”(p. 64). To make the most of the
+big-data revolution, supply chain researchers and managers need
+to understand and embrace DPB ’s role and implications for sup-
+ply chain decision making.
+DATA SCIENCE, PREDICTIVE ANALYTICS, AND BIG
+DATA
+There is growing popular, business, and academic attention to
+DPB. For instance, the October 2012 issue of Harvard Business
+Review contained three articles that are relevant to this editorial:
+“Big Data: The Management Revolution ”(McAfee and Bry-
+njolfsson 2012), “Data Scientist: The Sexiest Job of the 21st
+Century ”(Davenport and Patil 2012), and “Making Advanced
+Analytics Work for You ”(Barton and Court 2012). MIS Quar-
+terly had a special issue on business intelligence and the lead
+article was titled, “Business Intelligence and Analytics: From Big
+Data to Big Impact ”(Chen et al. 2012). There is also a plethora
+of articles in trade and even lay publications on these topics.
+There is even a new journal, Big Data , which premiered in
+March 2013.
+Over the past few years, we have been trying to understand
+the DPB ’s implications for research and education in business
+logistics and SCM. We believe that these new tools will trans-
+form the way supply chain are designed and managed, presenting
+a new and signi ﬁcant challenge to logistics and SCM. Meeting
+this challenge may require changes in foci of research and educa-
+tion. Many traditional approaches will need to be re-imagined.
+Some standard practices may even be discarded as obsolete in
+the new data-rich environment. Some may see the possibilities as
+threats rather than opportunities. Yet DPB and SCM are funda-
+mentally compatible, thus the tremendous value of DPB lies
+within our grasp.Corresponding author:
+Matthew A. Waller, Sam M. Walton College of Business, WCOB
+308, University of Arkansas, Fayetteville, AR 72701-1201, USA;
+E-mail: MWaller@walton.uark.edu
+1Source: IBM, http://www-01.ibm.com/software/data/bigdata/
+accessed March 27, 2013.Journal of Business Logistics , 2013, 34(2): 77 –84
+© Council of Supply Chain Management Professionals
+We want to encourage submission of research on topics
+related to DPB that is relevant to logistics and SCM. Impor-
+tantly, because there is a lack of agreement regarding the mean-ings of these terms, and because there is a dearth of articles onhow these terms apply to the logistics and supply chain disci-plines, we would like to facilitate the process by suggesting de ﬁ-
+nitions, concepts, and avenues for research.
+Data science: Powerful tools made relevant by domain
+knowledge
+Generally, data science is the application of quantitative and
+qualitative methods to solve relevant problems and predict out-comes. One of the salient revelations of today, with the vast and
+growing amount of data, is that domain knowledge and analysis
+cannot be separated. This is another motivation to write this edi-torial. Research in the area of DPB is needed by researchers withdomain knowledge in logistics and SCM. Professor Jeff Stantonof Syracuse University was quoted by Dumbill et al. (2013):
+From a teaching perspective, as a faculty member I can
+teach someone how to do a t-test in 10 min, and I can
+teach them how to write a Python program in half anhour, but what I cannot teach them very easily is thedomain knowledge. In other words, in a given area, if youare from healthcare, what you need to know in order tobe effective at analysis is very different than if you are in
+retail. That underlying domain knowledge, to be able to
+have a student come up to speed on that is very hard. (p.22)
+Likewise, Shelly Farnham of Microsoft was quoted by Dum-
+bill et al. (2013):
+One of the challenges is that data science is not agnostic
+of domain. For example, when we are looking for people,interns or full-time people on our team, we de ﬁnitely look
+for people who have experience analyzing data, but theyalso should be deeply engaged with the topic …I think
+that the domain knowledge is a very important aspect of
+what we are looking for. (p. 25)
+Thus, academic and applied professionals must have both the
+analytical skills and the business and management understanding.As Provost and Fawcett (2013) write, “But data science involves
+much more than just data-mining algorithms. Successful data sci-entists must be able to view business problems from a data per-spective ”(p. 52).
+Data scientists need deep domain knowledge and a broad set
+of analytical skills. Developing a broad set of analytical skillsrequires consistent investments of time. Developing deep domainknowledge requires similar dedication of effort. To that end, typ-
+ically there is no single individual that can possibly have all of
+what is needed by a data scientist. If you have someone with lotsof domain experience but limited analytical capabilities, it maybe dif ﬁcult to acquire the analytical capabilities. On the other
+hand, someone with strong analytical capabilities may not bewilling to learn the domain or may never have the opportunity tolearn the domain. Perhaps, developing analytical capabilities maybe easier at a younger age, whereas learning the intricacies of a
+domain may depend on accumulated experience, which emergesfrom motivation and well-invested time.
+Although we do not have a strong body of evidence, our con-
+jecture is that domain knowledge is necessary for data science
+but that the returns on domain knowledge are diminishing andthat the relationship is moderated by the breadth of the analyticalskills. Figure 1 illustrates the conceptual relationship betweeneffectiveness, domain knowledge, and breadth of analytical skillset. The effectiveness of a data scientist might be measured bythe size of the actionable opportunities they discover.
+However, some analytical skills are more important than oth-
+ers. Table 1 provides examples of skills that are needed by adata scientist in SCM. What is interesting is that education inmost of these disciplines progresses toward more focus and less
+breadth. This is not only true of the quantitative disciplines, but
+it is also true of the functional business disciplines. Training adata scientist would require a functional business discipline toinculcate toward more breadth, rather than more depth, as a stu-dent progresses in his/her educational path. This would be truefor the training of both the practitioner and the researcher. Per-haps there should be two paths for Master and PhD degrees inSCM, one for domain knowledge creation and dissemination andone for SCM data science.
+2
+You will probably notice the applied nature of the skills
+needed by an SCM data scientist in Table 1. However, this does
+not mean that a strong theoretical education is not needed in
+SCM. In fact, a strong theoretical knowledge is crucial, within
+the area of SCM . That is, an SCM data scientist needs a strong
+theoretical background in SCM along with an ability to applyanalysis techniques from a broad variety of quantitative disci-plines as well as business disciplines. You will notice that theﬁrst six disciplines in Table 1 are quantitative disciplines and the
+next four are business disciplines. Because data science isapplied, tools are needed for application. It is notable that SCMis missing from the list. It is missing from the list because theSCM data scientist must understand both the theory and applica-
+tion of SCM. This is the domain, and the other disciplines are
+used for application of data to the SCM domain.Broad Set of
+Narrow Set ofAnalyƟcal SkillsEﬀecƟveness of
+Data Scien Ɵst
+AnalyƟcal Skills
+Domain KnowledgeFigure 1: Effectiveness, domain knowledge, and breadth of ana-
+lytical skill set.
+2It is tempting to think that this is the difference between mar-
+keting and marketing science, however, most PhDs in marketing
+science tend to have a very strong focus on one methodological
+area.78 M. A. Waller and S. E. Fawcett
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+We now propose a de ﬁnition of SCM data science: SCM data
+science is the application of quantitative and qualitative methodsfrom a variety of disciplines in combination with SCM theory tosolve relevant SCM problems and predict outcomes, taking intoaccount data quality and availability issues. We welcome
+research on this topic and would be pleased to publish it in theJournal of Business Logistics . Practitioners are looking for
+answers, and as researchers we should be proposing solutions,frameworks, and answers, all based on theoretically groundedresearch. We need theoretically based research to verify or rejectthe ideas in Table 1 and to expand them. At this point, Table 1
+is simply conjecture. We invite research that would address
+which skill sets are needed by SCM data scientists.
+Some may object to our claim that SCM theory is needed by
+the SCM data scientist. However, theory is particularly importantnow that data and data variety are proliferating. Theory is partic-ularly important for preventing false positives.
+3False positives
+emerge when relationships between variables are discovered thatdo not really exist. The problem is that as the number of vari-ables increases —that is, as the use of a theoretical data mining
+proliferates —the chances of false positives increases exponen-
+tially. In Figure 2, the horizontal axis is the number of variables
+and the vertical axis is the number of false positives when the
+probability of a given false positive is 0.01. Theory can help theresearch or manager avoid spurious decision making as theyavoid falling prey to “apparent ”relationships that do not really
+exist. As Barton and Court (2012) observe, “We have found that
+…hypothesis-led modeling generates faster outcomes and also
+roots models in practical data relationships that are more broadlyunderstood by managers ”(p. 81).
+Big data, which will be discussed below, is the source of the
+explosion of new variables that can be investigated, and thereforethe reason why we expect the number of false positives to grow
+exponentially. Using the appropriate logic and/or theory to build
+models prior to running predictive analytics is a key approach tomitigating the problems associated with false positives. So,again, although SCM data science is applied, it must be basedon theory to guard against a proliferation of false positives,which result in wasted time and money. Again, Barton and Court(2012) comment that a “pure data mining approach often leads
+to an endless search for what the data really say ”(p. 81).
+Predictive analytics
+Predictive analytics is a subset of data science. Recognition of
+the uniqueness of predictive analytics illuminates some
+interesting needs in research as is illustrated by Table 2.Table 1: Examples of skills needed by a supply chain management (SCM) data scientist
+DisciplineSCM data scientist skill set
+More important Less important
+Statistics Broad awareness of many different methods
+of estimation and samplingDerivations of methods and proofs
+of maximum likelihood estimation
+Forecasting Understanding application of qualitative and
+quantitative methods of forecastingUnderstanding of underlying stochastic
+processes
+Optimization Numerical methods of optimization Finding global optimal solutionsDiscrete event
+simulationQuick design and implementation of discrete
+event simulation modelsQueuing theory
+Applied probability Using probability theory with actual data to
+estimate the expected value of random variables of interestThe theory of stochastic processes
+Analytical mathematical
+modelingUsing numerical methods to estimate functions
+relating independent variables to dependent variablesProving theorems
+Finance Capital budgeting Ef ﬁcient market theory
+Economics Determining opportunity cost Macroeconomic theoryMarketing Marketing science Semiotics
+Accounting Managerial accounting Debits and credits journal entries
+Figure 2: Relationship between number of variables and num-
+ber of false positives when the probability of a given false posi-tive is 0.01.
+3For a very interesting discussion on this topic, see Carraway
+(2012).Data Science & Big Data 79
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Table 2 examines a sample of disciplines related to predictive
+analytics, selects a dimension of that discipline, and comparespossible research topics and provides an example of a researcharea that would be more relevant to predictive analytics and anexample of a research area that would be less relevant. Table 2indirectly points to the distinction between predictive analyticsand each of these quantitative disciplines. It also providesresearchers with possible avenues of research that would be inthe realm of predictive analytics.
+Importantly, although predictive analytics is related to many
+long-standing quantitative approaches, it stands as distinct from
+each. Statistics is quantitative, whereas predictive analytics isboth quantitative and qualitative. Forecasting is about predictingthe future, and predictive analytics adds questions regarding whatwould have happened in the past, given different conditions.Optimization is about ﬁnding the minimum or maximum of a
+function, subject to constraints, whereas predictive analytics alsoconcerns what would characterize a system that was not operat-ing optimally. Analytical modeling is primarily about generatingmathematical axioms and then proving lemmas and theorems,whereas predictive analytics attempts to quickly and inexpen-
+sively approximate relationships between variables while still
+using deductive mathematical methods to draw conclusions.These are some examples of the differences in emphasis between
+predictive analytics and well known quantitative disciplines.
+The topics in Table 2 have been examined in part, but addi-
+tional research in these relevant areas would advance predictiveanalytics ’ability to re ﬁne and improve supply chain decision
+making. Indeed, the Journal of Business Logistics is interested in
+predictive analytics research that is relevant to logistics andSCM. To that end, we propose de ﬁnitions of logistics and supply
+chain predictive analytics:
+Logistics predictive analytics use both quantitative and
+qualitative methods to estimate the past and future behav-
+ior of the ﬂow and storage of inventory, as well as the
+associated costs and service levels.
+SCM predictive analytics use both quantitative and quali-
+tative methods to improve supply chain design and com-petitiveness by estimating past and future levels ofintegration of business processes among functions or com-panies, as well as the associated costs and service levels.
+What is de ﬁned here as logistics predictive analytics and SCM
+predictive analytics has already existed in the past, it just lacked aTable 2: Examples of research in predictive analytics
+Comparative
+disciplineDimension
+of interestPredictive analytics research (examples)
+Relevant Less relevant
+Statistics Quantitative Integrating quantitative and
+qualitative analysisImproving Lagrange Multiplier
+tests for autocorrelation
+Forecasting Predicting the future Using forecasting techniques
+for evaluating what
+would have happened underdifferent circumstancesDeriving generalized estimators
+of seasonal factors
+Optimization Minimization and
+maximizationAssessment of the quality of
+the optimal solution andthe ability to implement itversus near optimal solutionsUse of polyhedral functions
+in linear programming
+Discrete event
+simulationQuantitative analysis
+of a system in astochastic settingDiscrete event simulation in a
+business process reengineering settingRandom number generation
+for discrete event simulation
+Applied probability Description of
+stochastic variables,
+expected values,and uncertaintyApplied probability along with
+application anchoring and
+framing affects from psychologyAsymptotic properties of
+Gaussian processes
+Data mining Search for patterns
+and relationshipsbetween a largenumber of variableswith lots of dataData mining preceded by logical
+and theoretical descriptionsof possible relationships and patternsGibbs posterior for variable
+selection in data mining
+Analytical
+mathematicalmodelingPrecise analysis using
+artiﬁcial and unrealistic
+assumptions for
+theorems and proofsMethods of quickly and
+inexpensively modeling approximaterelationships between variables
+while still using deductive
+mathematical methodsProving inventory theorems that
+assume known, continuous demandwith perfect information80 M. A. Waller and S. E. Fawcett
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+name. The idea is becoming so common that a name helps with
+communication about the concept. Reading Table 2 with these def-initions in mind should provide a guide to appropriate research onlogistics or SCM predictive analytics that would be of particularinterest at the Journal of Business Logistics . Barton and Court
+(2012) highlight the growing value of advanced analytics:
+“Advanced analytics is likely to become a decisive compet-
+itive asset in many industries and a core element in com-panies ’efforts to improve performance. It ’s a mistake to
+assume that acquiring the right kind of big data is all thatmatters. Also essential is developing analytics tools that
+focus on business outcomes …. (p. 81)
+Big data
+Big data is unique because of the volume, variety, and velocity
+of the data, which today is widely available and much lessexpensive to access and store (McAfee and Brynjolfsson 2012).Volume can occur in many ways. There are more data because,among other reasons, the data are captured in more detail. Forinstance, instead of just recording that a unit sold at a particularlocation, the time it was sold and the amount of inventory at thetime of the sale, is also captured. As another example, manycompanies that did not record daily sales by location and by
+stock-keeping unit to make inventory decisions, now do. More-
+over, long global supply chains necessitate data capture at multi-ple points in the supply chain. In addition, there is now aproliferation of consumer sentiment data resulting from Tweets,Likes, and product reviews on websites. Such data must be ana-lyzed and quanti ﬁed. Software companies that provide algorithms
+designed to assess text from reviews and Tweets are cropping upin large numbers. Table 3 provides examples of some of the
+causes of big data.
+Table 4 provides examples of potential applications of big
+data within logistics and SCM practice. Each column of Table 4represents a key managerial component of business logistics andeach row represents a different category of user of logistics. Thisis not intended to be an exhaustive list of components of logis-tics nor of users of logistics.
+Table 5 provides examples of research questions based upon
+management areas within logistics and SCM with reference tovarious sources of big data.
+Back to basics
+Finally, using management theory as a lens, we provide a few
+examples of research questions that are relevant to SCM in Table6.
+Demand for DPB professionals
+We believe that there is increasing demand for professionals with
+competencies in DPB. As an example of overall interest, we showﬁgures of the increasing numbers of Google searches for these
+terms. Figure 3 show a graph of numbers of Google searches
+4
+since 2004 for various relevant terms. The scales on the y-axes
+are relative with 100 representing the peak number of searches.
+As shown in Figure 3A, there were virtually no searches for
+“Data Science ”until 2005 and none for “Data Scientist ”until
+2011. We believe the terms are catching on because of theTable 3: Examples of causes of big data
+Type of data Volume Velocity Variety
+Sales More detail around the sale,
+including price, quantity,items sold, time of day, date,
+and customer dataFrom monthly and weekly
+to daily and hourlyDirect sales, sales of distributors,
+Internet sales, international sales,and competitor sales
+Consumer More detail regarding decision and
+purchasing behavior, including itemsbrowsed and bought, frequency,dollar value, and timingFrom click through
+to card usageFace pro ﬁling data for shopper
+identi ﬁcation and emotion detection;
+eye-tracking data; customersentiment about products purchasedbased on “Likes, ”“Tweets, ”and
+product reviews
+Inventory Perpetual inventory at more locations,
+at a more disaggregate level(e.g., style/color/size)From monthly updates
+to hourly updatesInventory in warehouses, stores,
+Internet stores, and a wide varietyof vendors online
+Location and time Sensor data to detect location in store,
+including misplaced inventory,
+in distribution center(picking, racks, staging, etc.),in transportation unitFrequent updates for new
+location and movementNot only where it is, but what is
+close to it, who moved it, its path
+to get there, and its predicted pathforward; location positions that aretime stamped from mobile devices
+4http://www.google.com/trends/explore#q=%22data%20science
+%22%2C%20%22data%20scientist%22&cmpt=q (referenced March
+22, 2013).Data Science & Big Data 81
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+increased need for people with skill sets that can deal with big
+data. Figure 3B shows a graph of searches5for“Predictive Ana-
+lytics. ”Like “Data Science, ”searches for “Predictive Analytics ”
+essentially began in 2005 with signi ﬁcant growth after 2009. Fig-ure 3C shows a graph of searches6for“Big Data, ”with “Supply
+Chain Management ”as a reference. As you can see, this is the
+ﬁrst year “Big Data ”had more searches than “Supply ChainTable 4: Examples of potential applications of big data in logistics
+User ForecastingInventory
+managementTransportation
+managementHuman
+resources
+Carrier Time of delivery,
+factoring in weather,
+driver characteristics,
+time of day and dateReal time capacity
+availabilityOptimal routing,
+taking into account
+weather, traf ﬁc congestion,
+and driver characteristicsReduction in
+driver turnover,
+driver assignment,
+using sentimentdata analysis
+Manufacturer Early response
+to extremely negativeor positive customersentimentReduction in shrink,
+efﬁcient consumer
+response, quick response,and vendor managedinventoryImproved noti ﬁcation of
+delivery time, andavailability; surveillance datafor improved yard managementMore effective
+monitoring ofproductivity;medical sensorsfor safety of laborin factories
+Retailer Customer sentiment
+data and use of
+mobile devices in storesImprovement in
+perpetual inventory
+system accuracyLinking local traf ﬁc
+congestion and weather
+to store traf ﬁcReduction in labor
+due to reduction in
+misplaced inventory
+Table 5: Examples of research questions
+Type of dataInventory
+managementTransportation
+managementCustomer and supplier
+relationship management
+Sales How can sales data
+be used with detailed
+customer data toimprove inventorymanagement eitherin terms of forecastingor treating some inventoryas“committed ”based
+on speci ﬁc shoppers requirements?How can more current
+sales data be used to
+re-direct shipments intransit? How can salesdata, integrated withdetailed customer data,be used for moreefﬁcient and effective
+merge-in-transit operations?How can more granular sales "
+data from the wide variety
+of sources that exist beused to improve visibilityon the one hand andtrust on the other,between trading partners?
+Consumer How can face pro ﬁling
+data for shopper identi ﬁcation,
+emotion detection, and eye-tracking
+data be used to determine
+which items to carryand stock at particularshelf locations?How can delivery
+preferences captured inonline purchases
+be used to manage
+transportation modeand carrier selection decisions?How can customer sentiment
+about products purchasedbased on “Likes, ”
+“Tweets, ”and product reviews
+be used to collaborate on forecasts?
+Location and time How can sensor data
+used to detect locationin store, be used toimprove inventory management,including departmentalmerchandising decisions?How can sensor data
+in the distributioncenter be used toanticipate transportationrequirements?How can location and time-stamp
+data of shoppers be used forcollaborative assortment andmerchandising decisions?
+5http://www.google.com/trends/explore#q=%22predictive%
+20analytics%22&cmpt=q (referenced March 22, 2013).6http://www.google.com/trends/explore#q=%22big%20data%
+22%2C%20%22supply%20chain%20management%22&cmpt=q
+(referenced March 22, 2013).82 M. A. Waller and S. E. Fawcett
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Management. ”We do not think big data will become more
+important than SCM; it is shown here just to illustrate howpopular the phrase is becoming.Clearly, Figure 3 shows that interest in DPB is growing
+exponentially. We believe that the phenomena underlying thistrend create a number of challenges and opportunities for ourTable 6: Examples of big data research questions that are relevant to supply chain management (SCM), stemming from management
+theory
+Theory Research question
+Transaction
+cost economicsHow does the existence of big data affect the reduction in internal transaction costs vis- /C18a-vis external
+transaction costs and how is this affecting the size of logistics organizations and the structure of supply chains?
+Resource-based view Can SCM data science be developed as a resource that is valuable, rare, in imitable, and nonsubstitutable?
+Contingency theory How can big data and SCM data science be used by logistics managers to meet internal needs and adjust to
+changes in the supply chain environment?
+Resource
+dependence theoryHow does the ability to use big data for SCM decisions affect a ﬁrm’s power in comparison with its suppliers
+or customers?
+Agency theory How does the proliferation of big data affect the agency costs associated with the use of third party logistics?Institutional theory How do differences in freedom of information between countries affect ﬁrms operating under these different
+institutions in terms of their abilities to leverage big data in the supply chain?
+Panel A: Google Searches for “Data Science” and “Data Scien Ɵst” since 2004
+Panel B: Google Searches for “Predic Ɵve AnalyƟcs” since 2004
+Panel C: Google Searches for “Big Data” and “Supply Chain Management” since 2004Figure 3: Google searches for growth of interest in DPB professionals.Data Science & Big Data 83
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+discipline. We have only begun to explore the possibilities, and
+we need to more creatively ask informed decisions about how
+big data can improve supply chain design, relationship develop-ment, improve customer service systems, and manage day-to-dayvalue-added operations.
+CONCLUDING DISCUSSION
+Although “Big data ”has become a contemporary buzzword, it has
+signiﬁcant implications in our discipline, and presents an opportu-
+nity and a challenge to our approach of research and teaching. Wecan easily see how data science and predictive analytics apply toSCM, but sometimes ﬁnd it more dif ﬁcult to see the direct connec-
+tion of big data to SCM. Therefore, we would like to see research
+published in the Journal of Business Logistics that brings clarity to
+the relevance of big data, and DPB in general within the supplychain domain. Here is how you can participate:
+1. Submit manuscripts dealing with DPB.
+2. Submit Forward Thinking articles on DPB.3. Send us a proposal for a Special Topics Forum on DPB.
+4. Design a Thought Leader Series on DPB.
+5. Start a new research project on DPB, using your existing
+research skills and domain knowledge.
+6. If you have ideas about how we can promote research on
+DPB outside of these categories, please email us and let usknow your thoughts.
+This edition of the Journal of Business Logistics , Volume
+34, Issue 2, represents the mid-point of our ﬁve-year commit-
+ment as co-editors-in-chief. We have been diligent in this com-mitment to serve not only as stewards and administrators ofthe journal but also to span boundaries to provide leadershipand direction for research in our discipline. We believe theintersections of our discipline with data science, predictive ana-lytics, and big data will create signi ﬁcant challenges for educat-
+ing future supply chain leaders. Yet, they also provideopportunities for research to advance knowledge in our disci-pline in a way that is both rigorous and relevant. Indeed, we
+believe it is a real doozy for knowledge creation and dissemi-
+nation in SCM.
+ACKNOWLEDGMENTS
+We thank the following individuals for their helpful comments,
+edits, and input on earlier drafts of this manuscript: Yao (Henry)Jin, John Saldana, Travis Tokar, Christopher Vincent, XiangWan, and Brent Williams. Their input resulted in a signi ﬁcant
+improvement to the manuscript.
+REFERENCES
+Barton, D., and Court, D. 2012. “Making Advanced Analytics
+Work for You. ”Harvard Business Review 90:79–83.
+Carraway, R. 2012. “Big Data, Small Bets. ”Forbes . http://www.
+forbes.com/sites/darden/2012/12/13/big-data-small-bets/.
+Chen, H., Chiang, R., and Storey, V. 2012. “Business
+Intelligence and Analytics: From Big Data to Big Impact. ”
+MIS Quarterly 36(4):1165 –88.
+Davenport, T., and Patil, D. 2012. “Data Scientist: The Sexiest
+Job of the 21st Century. ”Harvard Business Review 90:70–76.
+Dumbill, E., Liddy, E., Stanton, J., Mueller, K., and Farnham, S.
+2013. “Educating the Next Generation of Data Scientists. ”
+Big Data 1(1):21–27.
+Mayer-Sch €onberger, V., and Cukier, K. 2013. Big Data: A
+Revolution That Will Transform How We Live, Work, andThink . New York: Houghton Mif ﬂin Harcourt Publishing
+Company.
+McAfee, A., and Brynjolfsson, E. 2012. “Big Data: The
+Management Revolution. ”Harvard Business Review 90:60–
+68.
+Provost, F., and Fawcett, T. 2013. “Data Science and Its
+Relationship to Big Data and Data-Driven Decision Making. ”
+Big Data 1(1):51–59.84 M. A. Waller and S. E. Fawcett
+ 21581592, 2013, 2, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/jbl.12010 by Lock Haven University, Wiley Online Library on [25/03/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
