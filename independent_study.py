@@ -6,9 +6,10 @@ from collections import Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import nltk
+from PyPDF2 import PdfReader
 
-def is_stopwords_downloaded() -> None:
-    """Are stopwords downloaded = True return already downloaded else adds stopwords"""
+def ensure_nltk_resources() -> None:
+    """ensure_nltk_resources are downloaded"""
     try:
         nltk.data.find('corpora/stopwords')
         print("Stopwords corpus is already downloaded.")
@@ -20,6 +21,16 @@ def is_stopwords_downloaded() -> None:
         nltk_stopwords = nltk.corpus.stopwords.words('english')
         nltk_stopwords.extend(custom_stopwords)
         print("Additional values have been added after downloading the stopwords corpus.")
+    
+    # Check if WordNet data is downloaded
+    try:
+        nltk.data.find('corpora/wordnet')
+        print("WordNet corpus is already downloaded.")
+    except LookupError:
+        print("WordNet corpus is not downloaded. Downloading now...")
+        nltk.download('wordnet')
+        print("WordNet corpus has been downloaded.")
+
 
 def list_txt_files(directory: str) -> list[str]:
     """Return a list of full paths to .txt files in the specified directory."""
@@ -76,3 +87,18 @@ def create_sorted_csv_files(tf_idf_df: pd.DataFrame, output_directory: str):
         top_100_sorted_df = sorted_df.head(100)
         output_file_path = os.path.join(output_directory, f"{column}_top_100.csv")
         write_to_csv(output_file_path, top_100_sorted_df)
+
+def pdf_to_text(input_folder, output_folder):
+    """converts pdf to txt from folder"""
+    for filename in os.listdir(input_folder):
+        if filename.endswith('.pdf'):
+            pdf_path = os.path.join(input_folder, filename)
+            output_file_name = os.path.splitext(filename)[0] + '.txt'
+            txt_path = os.path.join(output_folder, output_file_name)
+            with open(pdf_path, 'rb') as pdf_file:
+                reader = PdfReader(pdf_file)
+                text = ''
+                for page in reader.pages:
+                    text += page.extract_text()
+                with open(txt_path, 'w', encoding='utf-8') as txt_file:
+                    txt_file.write(text)
