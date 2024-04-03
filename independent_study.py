@@ -67,3 +67,12 @@ def write_to_csv(output: str, fixeddf: pd.DataFrame):
     output_file_path = output
     fixeddf.to_csv(output_file_path)
     return output_file_path
+
+def create_sorted_csv_files(tf_idf_df: pd.DataFrame, output_directory: str):
+    """Sort by colum write to csv"""
+    # Step 1: Iterate over each column, sort it, and write top 100 rows to a new CSV
+    for column in tf_idf_df.columns:
+        sorted_df = tf_idf_df.sort_values(by=column, ascending=False)
+        top_100_sorted_df = sorted_df.head(100)
+        output_file_path = os.path.join(output_directory, f"{column}_top_100.csv")
+        write_to_csv(output_file_path, top_100_sorted_df)
