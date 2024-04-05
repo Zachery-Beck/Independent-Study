@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import nltk
 from PyPDF2 import PdfReader
+import matplotlib.pyplot as plt
 
 def ensure_nltk_resources() -> None:
     """ensure_nltk_resources are downloaded"""
@@ -21,10 +22,8 @@ def ensure_nltk_resources() -> None:
         nltk_stopwords = nltk.corpus.stopwords.words('english')
         nltk_stopwords.extend(custom_stopwords)
         print("Additional values have been added after downloading the stopwords corpus.")
-    
-    # Check if WordNet data is downloaded
     try:
-        nltk.data.find('corpora/wordnet')
+        nltk.data.find('corpora/wordnet.zip')
         print("WordNet corpus is already downloaded.")
     except LookupError:
         print("WordNet corpus is not downloaded. Downloading now...")
@@ -102,3 +101,54 @@ def pdf_to_text(input_folder, output_folder):
                     text += page.extract_text()
                 with open(txt_path, 'w', encoding='utf-8') as txt_file:
                     txt_file.write(text)
+
+
+def prep_df(df:pd.DataFrame) -> tuple[pd.DataFrame,list]:
+    """preps df for graphing and grabs headders"""
+    top = list(df.columns)
+    count = len(top)
+    for i in range(1,count):
+        df[top[i]] = df[top[i]].astype(float)
+    return df, top
+
+def get_graph_vals(df:pd.DataFrame,top) -> float:
+    """makes vars needed for graphing"""
+    tf1 = df.sort_values(by=top[3], ascending=False)
+    highest_count = df.sort_values(by=top[1], ascending=False)
+    return tf1, highest_count
+
+def barh(a,x,y,top):
+    """creats bar chart"""
+    width = .35
+    plt.barh(a[top[x]][:10], a[top[y]][:10],width, color='gray')
+    plt.title("Count of Words")
+    for pos in ['right', 'top']:
+        plt.gca().spines[pos].set_visible(False)
+    plt.show()
+
+def scatter(a,x,y,top):
+    """creates scatter chart"""
+    s = 2
+    plt.axis([0, 100, 0, .28])
+    for pos in ['right', 'top']:
+        plt.gca().spines[pos].set_visible(False)
+    plt.scatter(a[top[x]], a[top[y]], s =s, color = 'r')
+    plt.title("Word count & TIDF of doc 1")
+    plt.show()
+ 
+def pie(a,x,y,top):
+    """creates pie chart"""
+    plt.pie(a[top[y]][:10], labels=a[top[x]][:10],
+            autopct='%1.1f%%', pctdistance=0.84,          
+            wedgeprops= {
+                "edgecolor":"black",
+                'linewidth': 1,
+                'antialiased': True
+                }
+            )
+    centre_circle = plt.Circle((0, 0), 0.70, fc='white')
+    fig = plt.gcf()
+    fig.gca().add_artist(centre_circle)
+    plt.title('Top Word counts')
+    plt.show()
+    
