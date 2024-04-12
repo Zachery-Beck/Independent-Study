@@ -12,16 +12,12 @@ import matplotlib.pyplot as plt
 def ensure_nltk_resources() -> None:
     """ensure_nltk_resources are downloaded"""
     try:
-        nltk.data.find('corpora/stopwordsz')
+        nltk.data.find('corpora/stopwords')
         print("Stopwords corpus is already downloaded.")
     except LookupError:
         print("Stopwords corpus is not downloaded. Downloading now...")
-        nltk.download('stopwords')
+        nltk.download('stopwords', force=True)
         print("Stopwords corpus has been downloaded.")
-        custom_stopwords = ['also', 'day', 'make', 'one', 'ways', 'work','et','al']
-        nltk_stopwords = nltk.corpus.stopwords.words('english')
-        nltk_stopwords.extend(custom_stopwords)
-        print("Additional values have been added after downloading the stopwords corpus.")
     try:
         nltk.data.find('corpora/wordnet.zip')
         print("WordNet corpus is already downloaded.")
@@ -49,7 +45,9 @@ def file_to_string(txt_files_list: list[str]) -> str:
 def calculate_tf_idf_simplified(string_list: list[str], count_dict: dict) -> pd.DataFrame:
     """Calculate TF-IDF scores from provided document string and return DataFrame."""
     # Use NLTK's stop words
+    custom_stopwords = ['et','al']
     nltk_stopwords = nltk.corpus.stopwords.words('english')
+    nltk_stopwords.extend(custom_stopwords)
     vectorizer = TfidfVectorizer(stop_words=nltk_stopwords, input='filename')
     vectors = vectorizer.fit_transform(string_list)
     feature_names = vectorizer.get_feature_names_out()
