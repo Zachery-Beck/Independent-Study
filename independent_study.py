@@ -12,13 +12,13 @@ import matplotlib.pyplot as plt
 def ensure_nltk_resources() -> None:
     """ensure_nltk_resources are downloaded"""
     try:
-        nltk.data.find('corpora/stopwords')
+        nltk.data.find('corpora/stopwordsz')
         print("Stopwords corpus is already downloaded.")
     except LookupError:
         print("Stopwords corpus is not downloaded. Downloading now...")
         nltk.download('stopwords')
         print("Stopwords corpus has been downloaded.")
-        custom_stopwords = ['also', 'day', 'make', 'one', 'ways', 'work']
+        custom_stopwords = ['also', 'day', 'make', 'one', 'ways', 'work','et','al']
         nltk_stopwords = nltk.corpus.stopwords.words('english')
         nltk_stopwords.extend(custom_stopwords)
         print("Additional values have been added after downloading the stopwords corpus.")
@@ -40,7 +40,6 @@ def list_txt_files(directory: str) -> list[str]:
 def file_to_string(txt_files_list: list[str]) -> str:
     """Read all content from a list of text files and concatenate into a single string."""
     all_content = ""
-    # file_list= []
     for file in txt_files_list:
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -62,7 +61,7 @@ def calculate_tf_idf_simplified(string_list: list[str], count_dict: dict) -> pd.
     cols = words_df.columns.tolist()
     cols.insert(0, cols.pop(cols.index('WordCounts')))
     words_df = words_df[cols]
-    print(words_df.head())
+    # print(words_df.head())
     return words_df
 
 def count_of_words(content: str) -> dict:
@@ -75,20 +74,20 @@ def count_of_words(content: str) -> dict:
 def write_to_csv(output: str, fixeddf: pd.DataFrame):
     """Writes the DataFrame to a CSV"""
     output_file_path = output
-    fixeddf.to_csv(output_file_path)
+    fixeddf.to_csv(output_file_path,index=False)
     return output_file_path
 
 def create_sorted_csv_files(tf_idf_df: pd.DataFrame, output_directory: str):
     """Sort by colum write to csv"""
     # Step 1: Iterate over each column, sort it, and write top 100 rows to a new CSV
-    for column in tf_idf_df.columns:
+    for column in tf_idf_df.columns[1:]:
         sorted_df = tf_idf_df.sort_values(by=column, ascending=False)
         top_100_sorted_df = sorted_df.head(100)
         output_file_path = os.path.join(output_directory, f"{column}_top_100.csv")
         write_to_csv(output_file_path, top_100_sorted_df)
 
 def pdf_to_text(input_folder, output_folder):
-    """converts pdf to txt from folder"""
+    """Converts PDF to TXT from folder."""
     for filename in os.listdir(input_folder):
         if filename.endswith('.pdf'):
             pdf_path = os.path.join(input_folder, filename)
@@ -98,9 +97,13 @@ def pdf_to_text(input_folder, output_folder):
                 reader = PdfReader(pdf_file)
                 text = ''
                 for page in reader.pages:
-                    text += page.extract_text()
+                    page_text = page.extract_text() + ' '  # Add a space at the end of each page
+                    text += page_text
+                # Remove non-alphabetic characters
+                text = re.sub(r'[^a-zA-Z\s]', '', text)
                 with open(txt_path, 'w', encoding='utf-8') as txt_file:
                     txt_file.write(text)
+
 
 
 def prep_df(df:pd.DataFrame) -> tuple[pd.DataFrame,list]:
@@ -151,4 +154,33 @@ def pie(a,x,y,top):
     fig.gca().add_artist(centre_circle)
     plt.title('Top Word counts')
     plt.show()
+
+def append_word_counts(df, txt_files_list) -> pd.DataFrame:
+    """Reads each file, counts the words, and appends word counts to the existing DataFrame"""
+    # Iterate over each file
+    for file in txt_files_list:
+        print("Processing file:", file)  # Print the file being processed
+        with open(file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            words = re.findall(r'\b\w+\b', content.lower())
+            word_count_dict = dict(Counter(words))
+            file_name = file.split('\\')[-1]  # Extracting file name from path
+            for word, count in word_count_dict.items():
+                df.at[word, file_name] = count if word in df.index else 0
+    return df
+
+
+# def extract_non_english_words(txt_folder, non_english_output_file):
+#     """Extracts non-English words from text files in a folder."""
+#     non_english_words = set()
+#     for filename in os.listdir(txt_folder):
+#         if filename.endswith('.txt'):
+#             txt_path = os.path.join(txt_folder, filename)
+#             with open(txt_path, 'r', encoding='utf-8') as txt_file:
+#                 text = txt_file.read()
+#                 # Find all non-English words
+#                 non_english_words.update(word for word in re.findall(r'\b[^a-zA-Z\s]+\b', text))
     
+#     # Write non-English words to a separate file
+#     with open(non_english_output_file, 'w', encoding='utf-8') as non_english_file:
+#         non_english_file.write('\n'.join(non_english_words))
