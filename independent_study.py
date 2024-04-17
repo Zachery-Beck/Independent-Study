@@ -5,12 +5,14 @@ import re
 from collections import Counter
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
-import nltk
 from PyPDF2 import PdfReader
 import matplotlib.pyplot as plt
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 def ensure_nltk_resources() -> None:
-    """ensure_nltk_resources are downloaded"""
+    """Ensure NLTK resources are downloaded."""
     try:
         nltk.data.find('corpora/stopwords')
         print("Stopwords corpus is already downloaded.")
@@ -25,7 +27,13 @@ def ensure_nltk_resources() -> None:
         print("WordNet corpus is not downloaded. Downloading now...")
         nltk.download('wordnet')
         print("WordNet corpus has been downloaded.")
-
+    try:
+        nltk.data.find('tokenizers/punkt')
+        print("Punkt tokenizer is already downloaded.")
+    except LookupError:
+        print("Punkt tokenizer is not downloaded. Downloading now...")
+        nltk.download('punkt')
+        print("Punkt tokenizer has been downloaded.")
 
 def list_txt_files(directory: str) -> list[str]:
     """Return a list of full paths to .txt files in the specified directory."""
@@ -33,7 +41,7 @@ def list_txt_files(directory: str) -> list[str]:
     txt_files = [os.path.join(directory, file) for file in all_files if file.endswith('.txt')]
     return txt_files
 
-def file_to_string(txt_files_list: list[str]) -> str:
+def file_to_combined_string(txt_files_list: list[str]) -> str:
     """Read all content from a list of text files and concatenate into a single string."""
     all_content = ""
     for file in txt_files_list:
@@ -42,16 +50,15 @@ def file_to_string(txt_files_list: list[str]) -> str:
             all_content += content
     return all_content
 
-def calculate_tf_idf_simplified(string_list: list[str], count_dict: dict) -> pd.DataFrame:
-    """Calculate TF-IDF scores from provided document string and return DataFrame."""
-    # Use NLTK's stop words
+def calculate_df(txt_files_list: list[str], count_dict: dict) -> pd.DataFrame:
+    """Calculate TF-IDF scores from provided document string and return DataFrame with tf-idf and count of words."""
     custom_stopwords = ['et','al']
     nltk_stopwords = nltk.corpus.stopwords.words('english')
     nltk_stopwords.extend(custom_stopwords)
     vectorizer = TfidfVectorizer(stop_words=nltk_stopwords, input='filename')
-    vectors = vectorizer.fit_transform(string_list)
+    vectors = vectorizer.fit_transform(txt_files_list)
     feature_names = vectorizer.get_feature_names_out()
-    headers = [pathlib.Path(string).name for string in string_list]
+    headers = [pathlib.Path(string).name for string in txt_files_list]
     words_df = pd.DataFrame(vectors.toarray(), columns=feature_names).transpose()
     words_df.columns = headers
     words_df.index.name = "Words"
@@ -59,7 +66,6 @@ def calculate_tf_idf_simplified(string_list: list[str], count_dict: dict) -> pd.
     cols = words_df.columns.tolist()
     cols.insert(0, cols.pop(cols.index('WordCounts')))
     words_df = words_df[cols]
-    # print(words_df.head())
     return words_df
 
 def count_of_words(content: str) -> dict:
@@ -67,7 +73,6 @@ def count_of_words(content: str) -> dict:
     words = re.findall(r'\b\w+\b', content.lower())
     word_counts = dict(Counter(words))
     return word_counts
-
 
 def write_to_csv(output: str, fixeddf: pd.DataFrame):
     """Writes the DataFrame to a CSV"""
@@ -77,7 +82,6 @@ def write_to_csv(output: str, fixeddf: pd.DataFrame):
 
 def create_sorted_csv_files(tf_idf_df: pd.DataFrame, output_directory: str):
     """Sort by colum write to csv"""
-    # Step 1: Iterate over each column, sort it, and write top 100 rows to a new CSV
     for column in tf_idf_df.columns[1:]:
         sorted_df = tf_idf_df.sort_values(by=column, ascending=False)
         top_100_sorted_df = sorted_df.head(100)
@@ -86,6 +90,7 @@ def create_sorted_csv_files(tf_idf_df: pd.DataFrame, output_directory: str):
 
 def pdf_to_text(input_folder, output_folder):
     """Converts PDF to TXT from folder."""
+    lemmatizer = WordNetLemmatizer()
     for filename in os.listdir(input_folder):
         if filename.endswith('.pdf'):
             pdf_path = os.path.join(input_folder, filename)
@@ -95,14 +100,14 @@ def pdf_to_text(input_folder, output_folder):
                 reader = PdfReader(pdf_file)
                 text = ''
                 for page in reader.pages:
-                    page_text = page.extract_text() + ' '  # Add a space at the end of each page
+                    page_text = page.extract_text() + ' '  
                     text += page_text
-                # Remove non-alphabetic characters
                 text = re.sub(r'[^a-zA-Z\s]', '', text)
+                tokens = word_tokenize(text)
+                lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
+                lemmatized_text = ' '.join(lemmatized_tokens)
                 with open(txt_path, 'w', encoding='utf-8') as txt_file:
-                    txt_file.write(text)
-
-
+                    txt_file.write(lemmatized_text)
 
 def prep_df(df:pd.DataFrame) -> tuple[pd.DataFrame,list]:
     """preps df for graphing and grabs headders"""
@@ -153,32 +158,21 @@ def pie(a,x,y,top):
     plt.title('Top Word counts')
     plt.show()
 
-def append_word_counts(df, txt_files_list) -> pd.DataFrame:
+def append_word_counts(df: pd.DataFrame, txt_files_list: list[str]) -> pd.DataFrame:
     """Reads each file, counts the words, and appends word counts to the existing DataFrame"""
-    # Iterate over each file
     for file in txt_files_list:
-        print("Processing file:", file)  # Print the file being processed
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
             words = re.findall(r'\b\w+\b', content.lower())
             word_count_dict = dict(Counter(words))
-            file_name = file.split('\\')[-1]  # Extracting file name from path
+            file_name = file.split('\\')[-1] 
             for word, count in word_count_dict.items():
-                df.at[word, file_name] = count if word in df.index else 0
+                column_name = f"{file_name}_WordCount"
+                if word in df.index:
+                    if column_name in df.columns:
+                        df.at[word, column_name] = count
+                    else:
+                        df[column_name] = 0  
+                        df.at[word, column_name] = count
+
     return df
-
-
-# def extract_non_english_words(txt_folder, non_english_output_file):
-#     """Extracts non-English words from text files in a folder."""
-#     non_english_words = set()
-#     for filename in os.listdir(txt_folder):
-#         if filename.endswith('.txt'):
-#             txt_path = os.path.join(txt_folder, filename)
-#             with open(txt_path, 'r', encoding='utf-8') as txt_file:
-#                 text = txt_file.read()
-#                 # Find all non-English words
-#                 non_english_words.update(word for word in re.findall(r'\b[^a-zA-Z\s]+\b', text))
-    
-#     # Write non-English words to a separate file
-#     with open(non_english_output_file, 'w', encoding='utf-8') as non_english_file:
-#         non_english_file.write('\n'.join(non_english_words))
